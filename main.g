@@ -178,15 +178,18 @@ ParTest:=function(a)
 end;
 
 ParTest2:=function(a)
-	local b, br;
-	for br in AllSmallSkewbraces(a) do IsTwoSided(br); IsTrivialSkewbrace(br); IsClassical(br); Print("\nNew brace:","\nIs two sided? ", IsTwoSided(br)," Is trivial? ", IsTrivialSkewbrace(br), " Is abelian? ", IsClassical(br), "\nElements: ");
+	local b, br, i,j;
+	j:=1;
+	i:=1;
+	for br in AllSmallSkewbraces(a) do IsTwoSided(br); IsTrivialSkewbrace(br); IsClassical(br); Print("\n\nNew brace"," ",i,":","\nIs two sided? ", IsTwoSided(br)," Is trivial? ", IsTrivialSkewbrace(br), " Is abelian? ", IsClassical(br), "\nElements: "); i:=i+1;
 		if IsTwoSided(br)<>true then
 			for b in br do Sbe(br,b); Print(Sbe(br,b)," "); 
 			od;
 		else 
-			Print("TWO-SIDED"); 
+			Print("TWO-SIDED"," ",j); j:=j+1; 
 		fi; 
 	od; 
+	Print("\n\nAll braces:"," ",i,"\nTwo-sided:"," ",j);
 end;
 
 
