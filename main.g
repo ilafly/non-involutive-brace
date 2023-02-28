@@ -155,6 +155,40 @@ test:=function(br)
   od;
 end;
 
+#Some code for finding the right distributing elements (Far from perfect)
+
+Sbe:= function(br, a)
+  local b,c,x;
+  for b in AsList(br) do
+    for c in List(SkewbraceAList(br), x -> SkewbraceElmConstructor(br, x)) do
+      if (b+c)*a<>b*a-a+c*a then
+        return false; 
+      fi;
+    od;
+  od;
+  return true;
+end;
+
+ParTest:=function(a)
+	local b, br;
+	for br in AllSmallSkewbraces(a) do IsTwoSided(br); IsTrivialSkewbrace(br); Print("\nNew brace:","\nIs two sided? ", IsTwoSided(br)," Is trivial? ", IsTrivialSkewbrace(br), "\nElements: ");
+		for b in br do Sbe(br,b); Print(Sbe(br,b)," "); 
+		od; 
+	od; 
+end;
+
+ParTest2:=function(a)
+	local b, br;
+	for br in AllSmallSkewbraces(a) do IsTwoSided(br); IsTrivialSkewbrace(br); IsClassical(br); Print("\nNew brace:","\nIs two sided? ", IsTwoSided(br)," Is trivial? ", IsTrivialSkewbrace(br), " Is abelian? ", IsClassical(br), "\nElements: ");
+		if IsTwoSided(br)<>true then
+			for b in br do Sbe(br,b); Print(Sbe(br,b)," "); 
+			od;
+		else 
+			Print("TWO-SIDED"); 
+		fi; 
+	od; 
+end;
+
 
 
 # IsTwoSided
