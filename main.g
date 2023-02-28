@@ -189,7 +189,7 @@ ParTest2:=function(a)
 			Print("TWO-SIDED"," ",j); j:=j+1; 
 		fi; 
 	od; 
-	Print("\n\nAll braces:"," ",i,"\nTwo-sided:"," ",j);
+	Print("\n\nAll braces:"," ",i-1,"\nTwo-sided:"," ",j-1);
 end;
 
 
